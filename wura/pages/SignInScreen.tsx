@@ -1,5 +1,8 @@
 import Input from "@/components/input";
 import { useCallback, useState } from "react";
+import axios from "axios";
+import { signIn } from "next-auth/react";
+
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -14,6 +17,31 @@ const Auth = () => {
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
+
+  const Register= useCallback(async () => {
+    try {
+      await axios.post("/api/Register", {
+        email,
+        name,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email, name, password]);
+
+  const login = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: "/",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email, password]);
 
   return (
     <div
@@ -35,15 +63,15 @@ const Auth = () => {
               {moveVariant === "login" ? "Sign in" : "Register"}
             </h2>
             <div className="flex flex-col gap-4">
-                {moveVariant === "register"  && (
-                    <Input
-                    label="Username"
-                    onChange={(ev: any) => setName(ev.target.value)}
-                    id="name"
-                    value={name}
-                  />
-                )}
-              
+              {moveVariant === "register" && (
+                <Input
+                  label="Username"
+                  onChange={(ev: any) => setName(ev.target.value)}
+                  id="name"
+                  value={name}
+                />
+              )}
+
               <Input
                 label="Email"
                 onChange={(ev: any) => setEmail(ev.target.value)}
@@ -60,17 +88,22 @@ const Auth = () => {
                 value={password}
               />
             </div>
-            <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700  transition">
-              {moveVariant === 'login' ? 'login' : 'Sign up'}
+            <button
+              onClick={moveVariant === 'login' ? login: Register}
+              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700  transition"
+            >
+              {moveVariant === "login" ? "login" : "Sign up"}
             </button>
             <p className="text-black mt-12  ">
-              {moveVariant === 'login' ? 'First Time using WURA ? ' : 'Already have an account'}
-    
+              {moveVariant === "login"
+                ? "First Time using WURA ? "
+                : "Already have an account"}
+
               <span
                 onClick={toggleVariant}
                 className="text-white ml-1 text-sm hover:underline  cursor-pointer"
               >
-                {moveVariant === 'login' ? 'Create an Account ' : ' Log in'}
+                {moveVariant === "login" ? "Create an Account " : " Log in"}
               </span>
             </p>
           </div>
