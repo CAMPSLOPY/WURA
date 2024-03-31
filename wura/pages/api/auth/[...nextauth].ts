@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client"; // Correct import
 import Credentials from "next-auth/providers/credentials";
 import { compare } from 'bcrypt';
 
+
 // Initialize Prisma client
 const prismadb = new PrismaClient();
 
@@ -14,7 +15,7 @@ export default NextAuth({
       credentials: {
         email: {
           label: "Email",
-          type: "text", 
+          type: "email", 
         },
         password: {
           label: "Password",
@@ -52,7 +53,7 @@ export default NextAuth({
     }),
   ],
   pages: {
-    signIn: '/SignInScreen',
+    signIn: '/auth',
   },
   debug: process.env.NODE_ENV === 'development',
   session: {
