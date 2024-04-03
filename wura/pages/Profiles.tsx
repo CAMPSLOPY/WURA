@@ -28,9 +28,9 @@ const Profiles = () => {
     <div className="bg-slate-600 h-full">
         <nav className="px-12 py-5">
           <img
-            src="./images/wura.jpeg"
+            src="./images/wura-white-bg.png"
             alt="app_logo"
-            className="h-12 cursor-pointer"
+            className="h-14 cursor-pointer"
           />
         </nav>
 

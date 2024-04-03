@@ -51,9 +51,9 @@ return () => window.removeEventListener("scroll", handleScroll);
      `}
       >
         <img
-          src="./images/wura.jpeg"
+          src="./images/wura-white-bg.png"
           alt="app_logo"
-          className="h-4 lg:h-12 cursor-pointer"
+          className="h-4 lg:h-14 cursor-pointer"
         />
 
         <div
@@ -82,7 +82,8 @@ return () => window.removeEventListener("scroll", handleScroll);
           <BiSolidChevronDownCircle className={`"text-white bg-white transition" ${showMobileMenu ? "rotate-180" : "rotate-0"}`}/>
           <MobileMenu visible={showMobileMenu} />
         </div>
-        <div className="flex flex-row gap-7 item-center ml-auto">
+        <div 
+        className="flex flex-row gap-7 item-center ml-auto">
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer">
             <BiSearchAlt className="text-white relative top-1 md:size-8" />
           </div>

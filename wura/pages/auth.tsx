@@ -53,15 +53,15 @@ const Auth = () => {
 
   return (
     <div
-      className="relative h-full w-full bg-[url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
-        bg-no-repeat bg-center bg-fixed bg-cover"
+      className="relative h-full w-full 
+        bg-no-repeat bg-center bg-fixed bg-contain"
     >
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
           <img
-            src="./images/wura.jpeg"
+            src="./images/wura-white-bg.png"
             alt="app_logo"
-            className="h-12 cursor-pointer"
+            className="h-14 cursor-pointer"
           />
         </nav>
 
