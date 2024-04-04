@@ -5,6 +5,8 @@ import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useSession } from "next-auth/react";
+import bg from './images/Blacker.png';
+
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -52,7 +54,7 @@ const Auth = () => {
 
 
   return (
-    <div
+    <div 
       className="relative h-full w-full 
         bg-no-repeat bg-center bg-fixed bg-contain"
     >

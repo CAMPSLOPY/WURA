@@ -9,7 +9,7 @@ if(req.method !== 'GET'){
 }
 try{
     await serverAuth(req)
-    const movies = prismadb.movie.findMany();
+    const movies = await prismadb.movie.findMany();
 
     return res.status(200).json(movies);
 
