@@ -1,10 +1,18 @@
 import React from "react";
 import { TiMediaPlay } from "react-icons/ti";
+import FavoriteButton from "./FavoriteButton";
+import { useRouter } from "next/router";
+import useInfoModal from "@/hooks/useInfoModal";
+import { IoChevronDownSharp } from "react-icons/io5";
 interface MovieCardProps {
   data: Record<string, any>;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+
+    const router = useRouter();
+
+    const {openModal} = useInfoModal();
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
@@ -73,7 +81,7 @@ rounded-b-md
         >
             <div className="flex flex-row items-center gap-3">
 
-                <div onClick={() => {}} className="
+                <div onClick={() => {router.push(`/watch/${data?.id}`)}} className="
                 cursor-pointer
                 w-6
                 h-6
@@ -88,7 +96,29 @@ rounded-b-md
                 hover:bg-neautral-300
                 ">
 <TiMediaPlay size={30} />
+                </div>
+                <FavoriteButton movieId={data?.id}/>
+                <div 
+                onClick={() => openModal(data?.id)}
+                className="
+                cursor-pointer
+                ml-auto
+                group/item
+                w-6
+                h-6
+                lg:w-10
+                lg:h-10
+                border-2
+                rounded-full
+                justify-center
+                flex
+                items-center
+                transition
+                hover:border-neutral-400
+                border-white
+                ">
 
+    <IoChevronDownSharp size={30} className="text-white group-hover/item:text-neutral-500" />
                 </div>
             </div>
             <p className="text-green-500 font-semibold mt-4">

@@ -36,7 +36,7 @@ return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className="w-full fixed z-40 mt-0">
+    <nav className="w-full fixed z-40">
       <div
         className={`
      md:px-16

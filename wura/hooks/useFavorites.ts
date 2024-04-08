@@ -9,9 +9,8 @@ const useFavorites = () => {
         isLoading,
         mutate
     } = useSWR('/api/favorites', fetcher, {
-        revalidateOnFocus: false,
-        refreshInterval: 0,
         revalidateIfStale: false,
+        revalidateOnFocus: false,
         revalidateOnReconnect: false,
     });
   return {

@@ -1,4 +1,6 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
+import { useSession} from 'next-auth/react';
 import React from "react";
 
 interface AccountMenuProps{
@@ -10,6 +12,7 @@ visible
 
 }) => {
 
+    const {data} = useSession();
     if (!visible){
         return null;
     }
@@ -18,7 +21,7 @@ visible
       <div className="flex flex-col gap-3">
 <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
 <img src="./images/user.png" alt="" className="w-8 rounded-md" />
-<p className="text-white text-sm group-hover/item:underline">Username</p>
+<p className="text-white text-sm group-hover/item:underline">{data?.user?.name}</p>
 </div>
 <hr className="bg-sky-600 border-0 h-px my-4" />
 <div onClick={() => signOut()} className="px-3 text-center text-white text-sm hover;underline">

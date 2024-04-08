@@ -2,17 +2,21 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { without } from "lodash";
 import prismadb from "@/lib/prismadb";
 import serverAuth from "@/lib/Serverauth";
+
 // use to add and remove our favorite IDS
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+   
     try {
         if (req.method === "POST") {
             const { currentUser } = await serverAuth(req);
 
             // Parse the incoming JSON body
-            const { movieId } = JSON.parse(req.body);
+            const { movieId } = req.body.movieId;
 
             const existingMovie = await prismadb.movie.findUnique({
-                where: { id: movieId },
+                where: { 
+                    id: movieId ,
+                }
             });
 
             if (!existingMovie) {
@@ -35,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         if (req.method === 'DELETE') {
             const { currentUser } = await serverAuth(req);
-            const { movieId } = JSON.parse(req.body);
+            const { movieId } =req.body;
 
             const existingMovie = await prismadb.movie.findUnique({
                 where: { id: movieId }
@@ -46,14 +50,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
 
             // Ensure `without` is imported correctly
-            const updateFavoriteIds = without(currentUser.favoriteIds, movieId);
+            const updatedFavoriteIds = without(currentUser.favoriteIds, movieId);
 
             const updatedUser = await prismadb.user.update({
                 where: {
                     email: currentUser.email || '',
                 },
                 data: {
-                    favoriteIds: updateFavoriteIds,
+                    favoriteIds: updatedFavoriteIds,
                 }
             });
 
