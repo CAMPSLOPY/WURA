@@ -7,7 +7,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+
+      backgroundImage: {
+        "imager": "url(''/images/wura-image.jpg')",
+      }
+    },
   },
   plugins: [],
 }

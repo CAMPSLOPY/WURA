@@ -25,7 +25,7 @@ const Profiles = () => {
   const {data} = useSession();
 
   return (
-    <div className="bg-slate-600 h-full">
+    <div className="bg-black h-full">
         <nav className="px-12 py-5">
           <img
             src="./images/wura-white-bg.png"

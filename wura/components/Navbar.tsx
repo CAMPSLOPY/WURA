@@ -53,7 +53,7 @@ return () => window.removeEventListener("scroll", handleScroll);
         <img
           src="./images/wura-white-bg.png"
           alt="app_logo"
-          className="h-4 lg:h-14 cursor-pointer"
+          className="h-4 lg:h-14 cursor-pointer size-16"
         />
 
         <div
@@ -66,11 +66,8 @@ return () => window.removeEventListener("scroll", handleScroll);
           "
         >
           <NavbarItem label="Home" />
-          <NavbarItem label="Series" />
-          <NavbarItem label="Films" />
-          <NavbarItem label="New & Popular" />
           <NavbarItem label="My List" />
-          <NavbarItem label="Search By Languages" />
+        
         </div>
         <div
           onClick={toggleMobileMenu}
