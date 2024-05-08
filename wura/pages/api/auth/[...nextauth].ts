@@ -90,8 +90,8 @@ pages: {
   session: {
     strategy: 'jwt',
   },
-  jwt: {
-    secret: process.env.NEXTAUTH_JWT_SECRET || 'default_secret', 
-  },
+  // jwt: {
+  //   secret: process.env.NEXTAUTH_JWT_SECRET || 'default_secret', 
+  // },
   secret: process.env.NEXTAUTH_SECRET || 'default_secret', 
 });
